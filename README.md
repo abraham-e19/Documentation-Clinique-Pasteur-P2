@@ -13,11 +13,10 @@ Infrastructure réseau sécurisée — BTS SIO SISR 2026
 
 ## Machines virtuelles
 
-| VM | Rôle | IP | OS |
-|----|------|----|----|
-| VM 112 | Serveur web (IIS) | 10.0.11.22 | Windows Server 2019 |
-| VM 107 | Serveur interne (server-bdd) | 10.0.11.x | Debian 12 |
-| VM | Supervision Nagios | 10.0.11.x | Debian 12 |
+| VM | Rôle | IP | OS | Zone |
+|----|------|----|----|------|
+| VM 112 | Serveur web (IIS) | 10.0.11.22 | Windows Server 2019 | DMZ |
+| VM 107 | Serveur interne (server-bdd) | — | Debian 12 | LAN |
 
 ## Documentation
 
@@ -33,7 +32,20 @@ Infrastructure réseau sécurisée — BTS SIO SISR 2026
 - [Sécurisation serveurs Debian](securite/securisation-serveurs-debian.md)
 
 ### Accès distant
-- [VPN SSL Médecins](acces-distant/vpn-professionels.md)
+- [VPN SSL Médecins](acces-distant/vpn-professionels.md) ✅
 
-### Supervision
-- [Interface Nagios](supervision/interface-admin-supervision.md)
+---
+
+## Projet 3 — Haute disponibilité
+
+Infrastructure haute disponibilité pour l'application mobile de la Clinique Pasteur.
+
+**Composants déployés :** Nginx reverse proxy + Load balancer, 2 instances Node.js (PM2), HTTPS auto-signé, tunnel Ngrok, tests de tolérance aux pannes.
+
+| VM | Rôle | IP | OS | Zone |
+|----|------|----|----|------|
+| VM 114 | server-nginx (reverse proxy) | 10.0.11.30 | Debian 12 | DMZ |
+| VM 115 | server-nodejs-1 (port 3000) | 10.0.11.31 | Debian 12 | DMZ |
+| VM 116 | server-nodejs-2 (port 3001) | 10.0.11.32 | Debian 12 | DMZ |
+
+**Documentation complète :** [Portfolio BTS — Projet 3](https://abraham-e19.github.io/portfolio-projet-bts/)
